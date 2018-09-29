@@ -6,6 +6,7 @@ class Deck{
   
   public Deck(){
     createDeck();
+    shuffle();
   }
   
   public void createDeck(){
