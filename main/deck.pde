@@ -10,7 +10,6 @@ class Deck{
   }
   
   public void createDeck(){
-    Card c = new Card();
     String[] suits = new String[]{" diamond"," clubs"," hearts"," spades"};
     String name = "";
     for(int i=2;i<11;i++){
