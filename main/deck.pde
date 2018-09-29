@@ -2,9 +2,10 @@ import java.util.ArrayList;
 import java.util.Random;
 class Deck{
   private ArrayList<Card> cards = new ArrayList<Card>();
+  private Card cardnum;
   
   public Deck(){
-    
+    createDeck();
   }
   
   public void createDeck(){
@@ -46,7 +47,11 @@ class Deck{
     }
   }
   
-  
+  public Card popCard(){
+    cardnum = cards.get(0);
+    cards.remove(0);
+    return cardnum;
+  }
   
 
 }
