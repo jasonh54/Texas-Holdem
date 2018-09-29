@@ -7,10 +7,11 @@ class Hand {
     
   }
   
-  private ArrayList<Hand> cards = new ArrayList<Hand>();
+  private ArrayList<Card> cards = new ArrayList<Card>();
   
-  private void addCard(Hand cards) {
-    
+  
+  public void addCard(Card c) {
+    cards.add(c);
   }
   
   
