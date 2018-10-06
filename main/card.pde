@@ -13,6 +13,15 @@ class Card{
     name = na;
   }
   
-  
+  //getters
+  public int getNum() {
+    return number;
+  }
+  public int getSuit() {
+    return suit;
+  }
+  public String getName() {
+    return name;
+  }
   
 }
