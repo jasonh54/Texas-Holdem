@@ -17,8 +17,8 @@ class Hand {
   public void sortHand() {
     for (int i = 0; i < 3; i++) {
       for (int k = 0; k < 2 - i; k++) {
-        Card temp1 = player.get(k);
-        Card temp2 = player.get(k + 1);
+        Card temp1 = cards.get(k);
+        Card temp2 = cards.get(k + 1);
         
         if(temp1.getNum() > temp2.getNum()) {
           cards.set(k, temp2);
