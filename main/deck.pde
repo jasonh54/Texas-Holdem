@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.Random;
 class Deck{
   private ArrayList<Card> cards = new ArrayList<Card>();
-  private String[] cardId = new String[]{"../cards/blankcard.png","../cards/diamonds/diamonds2.png","../cards/diamonds/diamonds3.png","../cards/diamonds/diamonds4.png","../cards/diamonds/diamonds5.png","../cards/diamonds/diamonds6.png"};
+  //private String[] cardId = new String[]{"../cards/blankcard.png","../cards/diamonds/diamonds2.png","../cards/diamonds/diamonds3.png","../cards/diamonds/diamonds4.png","../cards/diamonds/diamonds5.png","../cards/diamonds/diamonds6.png"};
   
   private Card cardnum;
   
