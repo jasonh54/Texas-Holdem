@@ -1,7 +1,10 @@
+PImage img;
 import java.util.ArrayList;
 import java.util.Random;
 class Deck{
   private ArrayList<Card> cards = new ArrayList<Card>();
+  private String[] cardId = new String[]{"../cards/blankcard.png","../cards/diamonds/diamonds2.png","../cards/diamonds/diamonds3.png","../cards/diamonds/diamonds4.png","../cards/diamonds/diamonds5.png","../cards/diamonds/diamonds6.png"};
+  
   private Card cardnum;
   
   public Deck(){
@@ -12,7 +15,7 @@ class Deck{
   public void createDeck(){
     String[] suits = new String[]{" diamond"," clubs"," hearts"," spades"};
     String name = "";
-    for(int i=2;i<11;i++){
+    for(int i = 2;i < 11;i++){
       for(int k=0;k<4;k++){
         name = i + suits[k];
         cards.add(new Card(i,k,name));
