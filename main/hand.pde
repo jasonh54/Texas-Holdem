@@ -9,6 +9,9 @@ class Hand {
   
   public ArrayList<Card> cards = new ArrayList<Card>();
   public ArrayList<Card> mergedCards = new ArrayList<Card>();
+  private boolean quad = false;
+  private int triples = 0;
+  private int doubles = 0;
   
   public void addCard(Card c) {
     cards.add(c);
@@ -29,6 +32,7 @@ class Hand {
     }
   }
   
+  //merges the table's hand and the player's hand
   public void mergeHand(Hand t) {
     t.sortHand();
     this.sortHand();
@@ -51,6 +55,24 @@ class Hand {
       this.mergedCards.add(this.cards.get(hIndex));
       hIndex++;
     }
+    while (tIndex != t.cards.size())  {
+      this.mergedCards.add(t.cards.get(tIndex));
+      tIndex++;
+    }
   }
+  
+  public void checkQuads() {
+    for (int i = 0; i < 4; i++) {
+      if (mergedCards.get(i).getNum() == mergedCards.get(i + 1).getNum() 
+      && mergedCards.get(i).getNum() == mergedCards.get(i + 2).getNum()
+      && mergedCards.get(i).getNum() == mergedCards.get(i + 3).getNum()) {
+        quad = true;
+      } else {
+        quad = false;
+      }
+    }
+  }
+  
+  
   
 }
