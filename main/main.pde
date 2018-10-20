@@ -8,7 +8,7 @@ void setup(){
     player.addCard(d.popCard());
     cpu.addCard(d.popCard());
   }
-  for (int 
+  
 }
 
 void draw(){
