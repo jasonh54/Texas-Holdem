@@ -1,6 +1,6 @@
 class Card{
   private int number;
-  private int suit;
+  private int suit; //0-D, 1-C, 2-H, 3-S
   private String name;
   
   public Card(){
