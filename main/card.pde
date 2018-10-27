@@ -2,7 +2,6 @@ class Card{
   private int number;
   private int suit;
   private String name;
-  public int id = -1;
   
   public Card(){
     
@@ -17,8 +16,6 @@ class Card{
   
 
   //make draw function
-  
-  //add images
 
   //getters
   public int getNum() {
