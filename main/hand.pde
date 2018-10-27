@@ -61,6 +61,7 @@ class Hand {
     }
   }
   
+  //check whether there is a Quad
   public void checkQuads() {
     for (int i = 0; i < 4; i++) {
       if (mergedCards.get(i).getNum() == mergedCards.get(i + 1).getNum() 
@@ -72,6 +73,34 @@ class Hand {
       }
     }
   }
+  
+   //checks the number of Doubles in the hand
+  public void checkDoubles() {
+    for (int i = 0; i < 6; i++) {
+      if (mergedCards.get(i).getNum() == mergedCards.get(i + 1).getNum()) {
+        doubles++;
+      }
+    }
+  }
+  
+  //checks the number of Triples in the hand
+  public void checkTriples() {
+    for (int i = 0; i < 5; i++) {
+      if (mergedCards.get(i).getNum() == mergedCards.get(i + 1).getNum()) {
+        if (mergedCards.get(i).getNum() == mergedCards.get(i + 2).getNum()) {
+          triples++;
+        }
+      }
+    }
+  } 
+ 
+  /*the program might count the same card over 
+  (eg. one quad, also counted as three doubles)
+  so we might have to make one function, not three,
+  that checks:
+  if i = i+1, then if i = i+2, then if i = i+3
+  and for each if/then, if it is false, it would count
+  as a double OR a triple OR a quad */
   
   
   
