@@ -32,6 +32,10 @@ class Hand {
     }
   }
   
+  public void sortSuit() {
+    
+  }
+  
   //merges the table's hand and the player's hand
   public void mergeHand(Hand t) {
     t.sortHand();
@@ -93,6 +97,11 @@ class Hand {
       }
     }
   } 
+  
+  //checks for all the combos
+  public void checkCombos() {
+    
+  }
  
   /*the program might count the same card over 
   (eg. one quad, also counted as three doubles)
@@ -101,6 +110,21 @@ class Hand {
   if i = i+1, then if i = i+2, then if i = i+3
   and for each if/then, if it is false, it would count
   as a double OR a triple OR a quad */
+  
+  /*
+  public void checkDTQ() {
+    for (int i = 0; i < 6; i++) {
+      //checks for a double
+      if mergedCards.get(i).getNum() == mergedCards.get(i + 1).getNum() {
+        //checks for a triple
+        if mergedCards.get(i).getNum() == mergedCards.get(i + 2).getNum() {
+        
+        }
+      } else {
+        //nothing
+      }
+    }
+  }
   
   
   
