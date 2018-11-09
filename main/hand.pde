@@ -12,6 +12,12 @@ class Hand {
   private boolean quad = false;
   private int triples = 0;
   private int doubles = 0;
+  private boolean straight = false;
+  private Card highestDouble;
+  private Card highestTriple;
+  private Card highestQuad;
+  private Card highestStraight;
+  private Card highestFlush;
   
   public void addCard(Card c) {
     cards.add(c);
@@ -30,6 +36,10 @@ class Hand {
         }
       }
     }
+  }
+  
+  public void sortSuit() {
+    
   }
   
   //merges the table's hand and the player's hand
@@ -93,6 +103,29 @@ class Hand {
       }
     }
   } 
+  
+  //checks for a straight in the hand
+  public void checkStraight(){
+    for(int i=0; i<3; i++){
+      int prevNum = mergedCards.get(i).getNum();
+      int count = 0;
+      for(int k=1; k<5; k++){
+        
+        if(mergedCards.get(i+k).getNum()-1 == prevNum){
+          prevNum = mergedCards.get(i+k).getNum();
+          count++;
+        }
+      }
+      if(count == 4){
+        straight = true;
+      }
+    }
+  }
+  
+  //checks for all the combos
+  public void checkCombos() {
+    
+  }
  
   /*the program might count the same card over 
   (eg. one quad, also counted as three doubles)
@@ -101,7 +134,22 @@ class Hand {
   if i = i+1, then if i = i+2, then if i = i+3
   and for each if/then, if it is false, it would count
   as a double OR a triple OR a quad */
+/*  
   
+  public void checkDTQ() {
+    for (int i = 0; i < 6; i++) {
+      //checks for a double
+      if mergedCards.get(i).getNum() == mergedCards.get(i + 1).getNum() {
+        //checks for a triple
+        if mergedCards.get(i).getNum() == mergedCards.get(i + 2).getNum() {
+        
+        }
+      } else {
+        //nothing
+      }
+    }
+  }
   
+ */ 
   
 }

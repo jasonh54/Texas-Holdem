@@ -30,29 +30,45 @@ void setup(){
   
   //sets size of the canvas to a x of 800, and a y of 800
   size(800,800);
-  
+ 
   //gives the table 5 random cards from the deck
   for(int i = 0; i < 5; i++){
     table.addCard(d.popCard());
   }
   
-  //gives the player and cpu each 2 random cards from the deck, and also flipping the player cards upwards so that the player can see their cards, but not the cpu's
-  for(int i = 0; i < 2; i++){
+  /* gives the player and cpu each 2 random cards from the deck,
+  and also flipping the player cards upwards so that the player can see their cards,
+  but not the cpu's (right now cpu card are visible,
+  simply remove the "cpu.cards.get(i).flipCard()" line or comment it out to hide the cpu cards.*/
+  
+  for(int i = 0;i < 2; i++) {
     player.addCard(d.popCard());
     player.cards.get(i).flipCard();
     cpu.addCard(d.popCard());
     cpu.cards.get(i).flipCard();
+  }  
+  
   }
   
+  //player.checkCombos();
+  //cpu.checkCombos();
+
+  /* turn counter for game,
+  basically variable determines which cards of the table are shown,
+  if turn = 1, only the first card of the table is shown,
+  if turn = 2, then only the first two cards of the table is shown,
+  and so on. Should go from 0 to 3 to 4 and ending at 5.*/
   
-  
-}
-  //turn counter for game, basically variable determines which cards of the table are shown, if turn = 1, only the first card of the table is shown, if turn = 2, then only the first two cards of the table is shown, and so on. Should go from 0 to 3 to 4 and ending at 5.
   int turn = 5;
 
-  //increment is the variable for x of the cards of the tables to draw them properly, which increases by 73 every loop to move the card to the right 
+  /* increment is the variable for x of the cards of the tables to draw them properly,
+  which increases by 73 every loop to move the card to the right*/
+  
   int increment = 200;
-  //inc2 is another increment varibale seperate from the original increment variable "increment" (very simple i know), and it increases by 73 to draw the respective card in the right place (like the increment counter (original). cpuInc is the same thing.
+  
+  /* inc2 is another increment varibale seperate from the original increment variable "increment" (very simple i know),
+  and it increases by 73 to draw the respective card in the right place (like the increment counter (original). cpuInc is the same thing.*/
+  
   int inc2 = 300;
   int cpuInc = 651;
   

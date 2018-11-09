@@ -1,13 +1,13 @@
 class Card{
   //contains the number of the card
   private int number;
-  //contains the suit of the card
+  //contains the suit of the card, 0-D, 1-C, 2-H, 3-S
   private int suit;
   //contains the name of the card
   private String name;
   //contains the x position from where to draw the card from
   private int cardX;
-  //the variable for if the card is flipped or not
+  //the variable for if the card is flipped or not, allows the game to hide the graphical value of the cards, so the player can not see them (the values of the card are still there, just the card itself in the game is not)
   public boolean flipped = true;
   
   public Card(){
