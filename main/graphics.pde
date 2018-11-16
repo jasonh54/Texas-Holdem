@@ -1,24 +1,14 @@
 class Graphics{
   
-  PImage img;
+  //temporary varibales for the image file names
+  public String cdD = "../cards/diamonds/diamonds-cards.jpg";
+  public String cdC = "../cards/clubs/clubs-cards.jpg";
+  public String cdH = "../cards/hearts/hearts-cards.jpg";
+  public String cdS = "../cards/spades/spades-cards.jpg";
+  public String cbb = "../cards/blueback.jpg";
+  public String cbr = "../cards/redback.jpg";
   
-  private String[] cardDiamonds = new String[]{"../cards/diamonds/diamonds2.png","../cards/diamonds/diamonds3.png","../cards/diamonds/diamonds4.png","../cards/diamonds/diamonds5.png","../cards/diamonds/diamonds6.png","../cards/blankcard.png","../cards/blankcard.png","../cards/blankcard.png","../cards/blankcard.png","../cards/blankcard.png","../cards/blankcard.png","../cards/blankcard.png","../cards/blankcard.png","../cards/blankcard.png","../cards/blankcard.png","../cards/blankcard.png","../cards/blankcard.png"};
   
-  public void displayCards(Card c){
-    
-    displayDiamonds(c);
-    
-  }
-  
-  public void displayDiamonds(Card c){
-    
-    if(c.getSuit() == 0){
-      
-      img = loadImage(cardDiamonds[c.getNum()]);
-      image(img, 50, 50);
-      
-    }
-  }
-  
+  //private int[] gfxX = new int[]{0,73,146,219,292,365,438,511,584,657,730,803,876};
   
 }
