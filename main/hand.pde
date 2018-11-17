@@ -9,15 +9,17 @@ class Hand {
   
   public ArrayList<Card> cards = new ArrayList<Card>();
   public ArrayList<Card> mergedCards = new ArrayList<Card>();
+  public ArrayList<Card> sortedSuit = new ArrayList<Card>();
   private boolean quad = false;
   private int triples = 0;
   private int doubles = 0;
   private boolean straight = false;
-  private Card highestDouble;
-  private Card highestTriple;
-  private Card highestQuad;
-  private Card highestStraight;
-  private Card highestFlush;
+  private boolean flush = false;
+  private Card highestDouble = new Card(0,0,"empty",0);
+  private Card highestTriple = new Card(0,0,"empty",0);;
+  private Card highestQuad = new Card(0,0,"empty",0);;
+  private Card highestStraight = new Card(0,0,"empty",0);;
+  private Card highestFlush = new Card(0,0,"empty",0);;
   
   public void addCard(Card c) {
     cards.add(c);
@@ -39,35 +41,47 @@ class Hand {
   }
   
   public void sortSuit() {
-    
+    sortedSuit = mergedCards;
+    for (int i = 0; i < sortedSuit.size()-1; i++) {
+      for (int k = 0; k < sortedSuit.size() - 1 - i; k++) {
+        Card temp1 = sortedSuit.get(k);
+        Card temp2 = sortedSuit.get(k + 1);
+        
+        if(temp1.getSuit() > temp2.getSuit()) {
+          sortedSuit.set(k, temp2);
+          sortedSuit.set(k + 1, temp1);
+        }
+      }
+    }
   }
   
   //merges the table's hand and the player's hand
   public void mergeHand(Hand t) {
     t.sortHand();
     this.sortHand();
-    
     int hIndex = 0;
     int tIndex = 0;
     
-    while (hIndex != this.cards.size() && tIndex != t.cards.size()) {
-      if (this.cards.get(hIndex).getNum() < t.cards.get(tIndex).getNum()) {
-        this.mergedCards.add(this.cards.get(hIndex));
-        hIndex++;
-      }
-      if (t.cards.get(tIndex).getNum() <= this.cards.get(hIndex).getNum()) {
-        this.mergedCards.add(t.cards.get(tIndex));
-        tIndex++;
-      }
+    while (hIndex < this.cards.size() && tIndex < t.cards.size()) {
+       if(this.cards.get(hIndex).getNum() < t.cards.get(tIndex).getNum()){
+         mergedCards.add(this.cards.get(hIndex));
+         hIndex++;
+         println(hIndex);
+       }else if(this.cards.get(hIndex).getNum() >= t.cards.get(tIndex).getNum()){
+         mergedCards.add(t.cards.get(tIndex));
+         tIndex++;
+         println(tIndex);
+       }
     }
     
-    while (hIndex != this.cards.size())  {
-      this.mergedCards.add(this.cards.get(hIndex));
-      hIndex++;
+    
+    while (hIndex < this.cards.size())  {
+       mergedCards.add(this.cards.get(hIndex));
+       hIndex++;
     }
-    while (tIndex != t.cards.size())  {
-      this.mergedCards.add(t.cards.get(tIndex));
-      tIndex++;
+    while (tIndex < t.cards.size())  {
+       mergedCards.add(t.cards.get(tIndex));
+       tIndex++;      
     }
   }
   
@@ -89,6 +103,9 @@ class Hand {
     for (int i = 0; i < 6; i++) {
       if (mergedCards.get(i).getNum() == mergedCards.get(i + 1).getNum()) {
         doubles++;
+        highestDouble = mergedCards.get(i + 1);
+        i++;
+        
       }
     }
   }
@@ -99,6 +116,8 @@ class Hand {
       if (mergedCards.get(i).getNum() == mergedCards.get(i + 1).getNum()) {
         if (mergedCards.get(i).getNum() == mergedCards.get(i + 2).getNum()) {
           triples++;
+          highestTriple = mergedCards.get(i + 1);
+          i+=2;
         }
       }
     }
@@ -114,6 +133,7 @@ class Hand {
         if(mergedCards.get(i+k).getNum()-1 == prevNum){
           prevNum = mergedCards.get(i+k).getNum();
           count++;
+          highestStraight = mergedCards.get(i+k);
         }
       }
       if(count == 4){
@@ -122,9 +142,50 @@ class Hand {
     }
   }
   
+  //checks for a flush in the hand
+  public void checkFlush(){
+    for(int i=0; i<3; i++){
+      int count = 0;
+      for(int k=1;k<5;k++){
+        if(sortedSuit.get(i).getSuit() == sortedSuit.get(i+k).getSuit()){
+          highestFlush = sortedSuit.get(i+k);
+          count++;
+        }
+      }
+      if(count == 4){
+        flush = true;
+      }
+      
+    }
+  }
+  
   //checks for all the combos
   public void checkCombos() {
+    checkDoubles();
+    checkTriples();
+    checkQuads();
+    checkStraight();
+    sortSuit();
+    checkFlush();
+    printAll();
     
+  }
+  
+  //print all data in the hand
+  public void printAll(){
+    println("Number of doubles: "+doubles);
+    println("Highest Pair: "+highestDouble.getName());
+    println("Number of triples: "+triples);
+    println("Highest Triple: "+highestTriple.getName());
+    println("Quad: "+quad);
+    println("Highest Quad: "+highestQuad.getName());
+    println("Straight: "+straight);
+    println("Highest Straight: "+highestStraight.getName());
+    println("Flush: "+flush);
+    println("Highest Flush: "+highestFlush.getName());
+    for(int i=0; i<sortedSuit.size();i++){
+      println(sortedSuit.get(i).getName());
+    }
   }
  
   /*the program might count the same card over 
